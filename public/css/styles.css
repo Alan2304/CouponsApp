@@ -1,0 +1,26 @@
+.jumbotron.index{
+    background: url('../img/Food-Safety-Banner-3.jpg') no-repeat;
+    background-size: 100%;
+    color: white;
+}
+
+.jumbotron.index p, .jumbotron.index h1{
+    text-shadow: 1px 1px black;
+} 
+
+.jumbotron.index p a.btn{
+    text-shadow: none;
+}
+
+div.card{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+img.card-image-top{
+    width: 100%;
+}
+
+.card{
+    margin-right: 16px;
+}
