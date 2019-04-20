@@ -15,32 +15,41 @@
 <div class="container mt-3">
     <div class="row d-flex justify-content-center">
         <div class="card-deck">
-        <div class="col-md-4 card">
-            <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
-            <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
-                <a href="#" class="btn btn-primary">Obtener cupon</a>
+            <div class="col-md-3 card">
+                <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
+                    <a href="#" class="btn btn-primary">Obtener cupon</a>
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4 card">
-            <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
-            <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
-                <a href="#" class="btn btn-primary">Obtener cupon</a>
+            <div class="col-md-3 card">
+                <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
+                    <a href="#" class="btn btn-primary">Obtener cupon</a>
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4 card">
-            <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
-            <div class="card-body">
-                <h5 class="card-title">Card Title</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
-                <a href="#" class="btn btn-primary">Obtener cupon</a>
+            <div class="col-md-3 card">
+                <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
+                    <a href="#" class="btn btn-primary">Obtener cupon</a>
+                </div>
             </div>
-        </div>
+
+            <div class="col-md-3 card">
+                <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores placeat illum aperiam aut et provident odio nostrum, quibusdam vero praesentium ab quia eius, repudiandae commodi corrupti at explicabo quaerat culpa.</p>
+                    <a href="#" class="btn btn-primary">Obtener cupon</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
