@@ -16,3 +16,11 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/createEstablishment', 'AdminController@createEstablishment')
+        ->name('createEstablishment')
+        ->middleware('auth');
+
+Route::post('/registerEstablishment', 'AdminController@registerEstablishmentAcc')
+        ->name('registerEstablishment')
+        ->middleware('auth');
