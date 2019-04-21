@@ -20,7 +20,7 @@ class HomeController extends Controller
                     return view('home');
                     break;
                 case 'Manager':
-                    return 'Manager View';
+                    return redirect()->route('establishments');
                     break;
                 case 'Normal':
                     return view('home');
