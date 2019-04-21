@@ -62,6 +62,21 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    @if (Auth::user()->role->name == 'Admin')
+                                        <a class="dropdown-item" href="{{route('createEstablishmentAcc')}}">Create Establishment User</a>
+                                    @endif
+
+                                    @if (Auth::user()->role->name == 'Manager')
+                                        <a class="dropdown-item" href="{{route('createEstablishment')}}">Add Establishment</a>
+                                        <a href="#" class="dropdown-item">Create Coupon</a>
+                                        <a href="#" class="dropdown-item">Exchange Coupon</a>
+                                        <a href="#" class="dropdown-item">Inventory</a>
+                                    @endif
+
+                                    @if (Auth::user()->role->name == 'Normal')
+                                        <a href="#" class="dropdown-item">My Coupons</a>
+                                    @endif
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

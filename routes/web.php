@@ -17,10 +17,21 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/createEstablishment', 'AdminController@createEstablishment')
+Route::get('/createEstablishmentAcc', 'AdminController@createEstablishment')
+        ->name('createEstablishmentAcc')
+        ->middleware('auth');
+
+Route::post('/registerEstablishmentAcc', 'AdminController@registerEstablishmentAcc')
+        ->name('registerEstablishmentAcc')
+        ->middleware('auth');
+
+Route::get('/createEstablishment', 'EstablishmentController@form')
         ->name('createEstablishment')
         ->middleware('auth');
 
-Route::post('/registerEstablishment', 'AdminController@registerEstablishmentAcc')
+Route::post('/registerEstablishment', 'EstablishmentController@create')
         ->name('registerEstablishment')
+        ->middleware('auth');
+Route::get('/establishments', 'EstablishmentController@index')
+        ->name('establishments')
         ->middleware('auth');

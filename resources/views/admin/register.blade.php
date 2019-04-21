@@ -7,7 +7,7 @@
                 {{$message}}
             </div>
         @endif
-        <form action="{{route('registerEstablishment')}}" method="post">
+        <form action="{{route('registerEstablishmentAcc')}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
