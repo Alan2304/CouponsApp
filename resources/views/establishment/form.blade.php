@@ -18,12 +18,26 @@
                     <label for="address">Address</label>
                     <input type="text" name="address" id="address" class="form-control" placeholder="Enter the addres of the Establishment">
                 </div>
+
                 <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" name="city" id="city" class="form-control" placeholder="Enter the City of the establishment">
+                    <label for="estates">Select a Estate</label>
+                    <select name="estate_id" id="estates" class="form-control">
+                        
+                    </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="estates">Select a City</label>
+                    <select name="city_id" id="cities" class="form-control" disabled>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/cityHandler.js') }}"></script>
 @endsection

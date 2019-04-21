@@ -18,9 +18,12 @@ class CreateCouponTable extends Migration
             $table->string('name');
             $table->float('discount');
             $table->date('expiration');
+            $table->string('code')->unique();
             //Foreign Key for Establishment
             $table->unsignedBigInteger('establishment_id');
-            $table->foreign('establishment_id')->references('id')->on('establishment');
+            $table->foreign('establishment_id')->references('id')->on('establishment')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
             
             //Foreign Key for Product
             $table->unsignedBigInteger('product_id');

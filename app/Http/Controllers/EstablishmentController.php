@@ -16,7 +16,8 @@ class EstablishmentController extends Controller
         $establishment = new Establishment();
         $establishment->name = $request->input('name');
         $establishment->address = $request->input('address');
-        $establishment->city = $request->input('city');
+        $establishment->estate_id = $request->input('estate_id');
+        $establishment->city_id = $request->input('city_id');
         $establishment->user_id = Auth::user()->id;
         
         $establishment->save();

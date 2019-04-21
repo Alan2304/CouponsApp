@@ -25,6 +25,8 @@ class AdminController extends Controller
             $user->email = $request->input('email');
             $user->password = Hash::make($request->input('pass'));
             $user->role_id = 2;
+            $user->estate_id = $request->input('estate_id');
+            $user->city_id = $request->input('city_id');
             $user->save();
 
             return back()->with('success', 'The Manager User Account was created succesfully');

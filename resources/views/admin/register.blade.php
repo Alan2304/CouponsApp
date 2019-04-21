@@ -23,7 +23,25 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="email" name="pass">
             </div>
+
+            <div class="form-group">
+                <label for="estates">Select a Estate</label>
+                <select name="estate_id" id="estates" class="form-control">
+                    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="estates">Select a City</label>
+                <select name="city_id" id="cities" class="form-control" disabled>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/cityHandler.js') }}"></script>
 @endsection

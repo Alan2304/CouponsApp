@@ -21,7 +21,17 @@ class CreateUsersTable extends Migration
             $table->string('password');            
             //Foreign key
             $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('role');
+            $table->foreign('role_id')->references('id')->on('role')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
+            $table->unsignedBigInteger('estate_id');
+            $table->foreign('estate_id')->references('id')->on('estate')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('city')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
 
             $table->rememberToken();
             $table->timestamps();

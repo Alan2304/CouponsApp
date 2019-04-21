@@ -61,17 +61,39 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="estates" class="col-md-4 col-form-label text-md-right">Select a Estate</label>
+                            <div class="col-md-6">
+                                <select name="estate_id" id="estates" class="form-control">
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="estates" class="col-md-4 col-form-label text-md-right">Select a City</label>
+                            <div class="col-md-6">
+                                <select name="city_id" id="cities" class="form-control" disabled>
+
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
-                        </div>
+                        </div>                        
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/cityHandler.js') }}"></script>
 @endsection
