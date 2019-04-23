@@ -21,6 +21,7 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
+    @yield('modal')
     <div id="app">
         <nav class="navbar navbar-expand-md  navbar-dark bg-dark navbar-laravel">
             <div class="container">
