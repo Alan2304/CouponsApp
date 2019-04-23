@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/estates', 'EstateController@index');
 
 Route::get('/estates/{id}/cities', 'EstateController@getCities');
+
+Route::get('/coupon/{id}', 'CouponController@getCoupon');
+
+Route::post('/coupon/{id}', 'CouponController@exchange');
