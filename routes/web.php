@@ -62,3 +62,28 @@ Route::get('/product/update/{id}', 'InventoryController@formUpdate')
 Route::post('/product/update/{id}', 'InventoryController@update')
         ->name('updateProduct')
         ->middleware('auth');
+
+//Coupons Route
+Route::get('/createCoupon/{id}', 'CouponController@form')
+        ->name('createCouponForm')
+        ->middleware('auth');
+
+Route::post('/coupon/create/{id}', 'CouponController@create')
+        ->name('createCoupon')
+        ->middleware('auth');
+
+Route::get('/coupon/{id}', 'CouponController@index')
+        ->name('showCoupons')
+        ->middleware('auth');
+
+Route::get('/coupon/delete/{id}', 'CouponController@delete')
+        ->name('deleteCoupon')
+        ->middleware('auth');
+
+Route::get('/coupon/update/{id}', 'CouponController@updateForm')
+        ->name('updateCouponForm')
+        ->middleware('auth');
+
+Route::post('/coupon/update/{id}', 'CouponController@update')
+        ->name('updateCoupon')
+        ->middleware('auth');
