@@ -34,6 +34,17 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="type_id">Type of the product</label>
+                    <select name="type_id" id="type_id" class="form-control">
+                        <option value="0">Select an Option</option>
+                        @foreach ($types as $type)
+                            <option value="{{$type->id}}">{{$type->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     Register
                 </button>
