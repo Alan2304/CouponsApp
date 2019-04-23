@@ -8,7 +8,7 @@ class City extends Model
 {
     protected $table='city';
 
-    public function city(){
+    public function estate(){
         return $this->belongsTo('App\Estate');
     }
 }
