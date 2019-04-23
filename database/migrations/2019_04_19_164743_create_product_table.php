@@ -24,6 +24,10 @@ class CreateProductTable extends Migration
             $table->foreign('establishment_id')->references('id')->on('establishment')
                     ->onDelete('NO ACTION')
                     ->onUpdate('NO ACTION');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('type')
+                    ->onDelete('NO ACTION')
+                    ->onUpdate('NO ACTION');
 
             $table->timestamps();
         });
