@@ -15,4 +15,8 @@ class Product extends Model
     public function coupons(){
         return $this->hasMany('App\Coupon');
     }
+
+    public function type(){
+        return $this->belongsTo('App\Type');
+    }
 }
