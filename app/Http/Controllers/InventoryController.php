@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Product;
 use App\Establishment;
+use App\Type;
 
 class InventoryController extends Controller
 {
@@ -16,7 +17,8 @@ class InventoryController extends Controller
         $user = Auth::user();
         if ($user->role->name == "Manager") {
             $establishments = $user->establishments;
-            return view('product.form', ['establishments' => $establishments]);
+            $types = Type::all();
+            return view('product.form', ['establishments' => $establishments, 'types' => $types]);
         }else{
             return redirect()->route('/');
         }
@@ -29,6 +31,7 @@ class InventoryController extends Controller
         $newProduct->amount = (float)$request->input('amount');
         $newProduct->quantity = $request->input('quantity');
         $newProduct->establishment_id = $request->input('establishment_id');
+        $newProduct->type_id = $request->input('type_id');
 
         $newProduct->save();
         return back()->with('success', 'The Product was saved Succesfully');
@@ -45,7 +48,14 @@ class InventoryController extends Controller
         $establishments =Auth::user()->establishments;
         foreach ($establishments as $establishment) {
             if ($product->establishment->id == $establishment->id) {
-                $product->delete();
+                $coupons = $product->coupons;
+                foreach ($coupons as $coupon) {
+                    if ($coupon->users()->count() > 0) {
+                        $coupon->users()->detach();
+                    }
+                    $coupon->delete();
+                }
+                $product->delete();                
                 return back()->with('deleted', 'The Product Was deleted Succesfully');
             }
         }
