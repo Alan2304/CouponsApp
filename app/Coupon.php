@@ -10,7 +10,7 @@ class Coupon extends Model
     protected $table="coupon";
     
     public function users(){
-        return $this->belongsToMany(User::class, 'user_coupon')->withPivot('code', 'used');;
+        return $this->belongsToMany(User::class, 'user_coupon')->withPivot('code', 'used');
     }
 
     public function establishment(){
