@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Coupon;
+
 class HomeController extends Controller
 {
     /**
@@ -23,12 +25,14 @@ class HomeController extends Controller
                     return redirect()->route('establishments');
                     break;
                 case 'Normal':
-                    return view('home');
+                    $coupons = Coupon::limit(4)->get();
+                    return view('home', ['coupons' => $coupons]);
                 default:
                     return view('home');
             }
         }else{
-            return view('home');
+            $coupons = Coupon::limit(4)->get();
+            return view('home', ['coupons' => $coupons]);
         }
     }
 }
