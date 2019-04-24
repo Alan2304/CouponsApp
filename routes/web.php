@@ -87,3 +87,17 @@ Route::get('/coupon/update/{id}', 'CouponController@updateForm')
 Route::post('/coupon/update/{id}', 'CouponController@update')
         ->name('updateCoupon')
         ->middleware('auth');
+
+Route::get('/coupons', 'CouponController@categorizedCoupons')
+        ->name('categorizedCoupons');
+
+Route::get('/coupons/type/{type}', 'CouponController@couponsByType')
+        ->name('couponsByType');
+
+Route::get('/myCoupons', 'CouponController@myCoupons')
+        ->name('myCoupons')
+        ->middleware('auth');
+
+Route::get('/myCoupons/delete/{id}', 'CouponController@myCouponsDelete')
+        ->name('myCouponsDelete')
+        ->middleware('auth');
