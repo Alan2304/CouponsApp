@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use App\Product;
 use App\Coupon;
 use App\Establishment;
+use App\Type;
+use App\User;
 
 class CouponController extends Controller
 {
@@ -103,4 +106,65 @@ class CouponController extends Controller
             'error' => 'There is no coupon for that user'
         ]);
     }
+
+    public function categorizedCoupons(){
+        $types = Type::all();
+        $categorizedCoupons = [];
+        foreach ($types as $type) {
+            $products = $type->products()->limit(3)->get();
+            $arrayType = [];
+            foreach ($products as $product) {
+                $coupons = $product->coupons()->limit(1)->get();
+                foreach ($coupons as $coupon) {
+                    $arrayType += [$coupon->id => $coupon];
+                }
+            }
+            $categorizedCoupons[$type->name] = $arrayType;
+        }
+
+        return view('coupon.categorizedCoupons', ['categorizedCoupons' => $categorizedCoupons]);
+    }
+
+    public function couponsByType($type){
+        $type = Type::where('name', $type)->first();
+        $products = $type->products;
+        $coupons = [];
+        foreach ($products as $product) {
+            $couponByProduct = $product->coupons;
+            foreach ($couponByProduct as $coupon) {
+                array_push($coupons, $coupon);
+            }
+        }
+        return view('coupon.couponsByType', ['coupons' => $coupons, 'type' => $type]);
+    }
+
+    public function setCoupon(Request $request){
+        $user = User::find($request->input('userId'));
+        $couponId = $request->input('couponId');
+        $userCoupons = $user->coupons;
+        foreach ($userCoupons as $coupon) {
+            if ($coupon->id == $couponId) {
+                return response()->json([
+                    'error' => 'You Already have this Coupon, please check your coupons'
+                ]);
+            }
+        }
+        $user->coupons()->attach($couponId, ['code' => $request->input('code')]);
+        return response()->json([
+            'body' => 'The Coupon Was saved, now you can go to the store and use it!'
+        ]);
+    }
+
+    public function myCoupons(){
+        $user = Auth::user();
+        $myCoupons = $user->coupons()->paginate(10);
+        return view('coupon.myCoupons', ['myCoupons' => $myCoupons]);
+    }
+
+    public function myCouponsDelete($id){
+        $user = Auth::user();
+        $user->coupons()->detach($id);
+        return back()->with('success', 'The Coupon was eliminated of your list');
+    }
+
 }
