@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+@section('title')
+    <h2 class="pr-5">Update Product</h2>
+@endsection
 
 @section('content')
     <div class="container">
