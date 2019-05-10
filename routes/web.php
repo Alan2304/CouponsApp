@@ -101,3 +101,7 @@ Route::get('/myCoupons', 'CouponController@myCoupons')
 Route::get('/myCoupons/delete/{id}', 'CouponController@myCouponsDelete')
         ->name('myCouponsDelete')
         ->middleware('auth');
+
+Route::post('/searchCoupons', 'CouponController@search')
+        ->name('searchCoupons')
+        ->middleware('auth');
