@@ -56,6 +56,7 @@
                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                     </div>
                     <input type="text" name="couponCode" class="form-control" placeholder="Search a Coupon by Code" aria-label="couponCode" aria-describedby="basic-addon1">
+                    <input type="hidden" name="establishmentId" id="establishmentId" value="{{$establishmentId}}">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </div>
             </div>
@@ -63,6 +64,11 @@
     </form>
 
     <div class="row">
+        @if ($message = Session::get('errorEstablishment'))
+            <div class="alert alert-danger col-md-12">
+                {{$message}}
+            </div>
+        @endif
         @if ($coupons->count() > 0)
             @foreach ($coupons as $coupon)
                 <div class="card mb-4">
