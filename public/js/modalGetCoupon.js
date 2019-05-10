@@ -14,6 +14,9 @@ $(function() {
             coupon = data.coupon;
             code = `${$('#userId').val()}-${coupon.code}`;
             modal.find('#code').text(code);
+            $('#code').text(code);
+            console.log(code);
+            
         });
     });
 
@@ -44,5 +47,11 @@ $(function() {
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.log('error');
         });
-    })
+    });
+
+    $('#getCouponModal').on('hidden.bs.modal', function (e) {
+        $('#error').text('');
+        $('#code').show();
+        $('#info').show();
+      });
 })

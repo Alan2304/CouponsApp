@@ -11,6 +11,7 @@ $(function() {
             success: function(data) {
                 coupon = data.coupon;
                 modal.find('#couponCode').text(`-${coupon.code}`);
+                couponId = null;
             }
         });
     
@@ -18,6 +19,8 @@ $(function() {
 
     $('#exchangeButton').click(function(event){
         let code = $('#code').val();
+        $('.actions').hide();
+        $('.lds-ring').show();
         $.ajax({
            url: `http://localhost:8000/api/coupon/${coupon.id}`,
            type: 'POST',
@@ -27,10 +30,29 @@ $(function() {
                user_id: code
            },
            success: function(data){
-               console.log(data);
+                if (data.error){
+                    $('#exchangeForm').hide();
+                    $('#error').text(data.error);
+                    $('.lds-ring').hide();
+                    $('.actions').show();
+                    coupon = null;
+                }else{
+                    $('.lds-ring').hide();
+                    $('.actions').show();
+                    $('#success').text('The Coupon was succesfully Exchanged');
+                    coupon = null;
+                }
            },
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
         });
     });
+
+    $('#exchangeModal').on('hidden.bs.modal', function (e) {
+        $('#error').text('');
+        $('#exchangeForm').show();
+        $('#success').text('');
+        $('#code').val('')
+      });
+
 });
