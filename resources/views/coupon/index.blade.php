@@ -89,6 +89,9 @@
         @else
             <div class="col-md-12">
                 <h2 class="text-center text-danger">There is no Coupons To show!</h2>
+                <div class="d-flex justify-content-center mt-3">
+                        <a href="{{url('inventory/'.$establishmentId)}}" class="btn btn-success">Go to Products and create one!</a>
+                </div>
             </div>
         @endif
     </div>
