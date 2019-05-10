@@ -43,8 +43,14 @@ class CouponController extends Controller
 
     public function index($id){
         $establishment = Establishment::find($id);
-        $coupons = $establishment->coupons;
-        return view('coupon.index', ['coupons' => $coupons]);
+        $user = Auth::user();
+        
+        if ($establishment->user_id == $user->id) {
+            $coupons = $establishment->coupons()->paginate(10);
+            return view('coupon.index', ['coupons' => $coupons, 'establishmentId' => $establishment->id]);
+        }else{
+            return back()->with('errorEstablishment', "You can't access to those coupons");
+        }
     }
 
     public function delete($id){
@@ -165,6 +171,14 @@ class CouponController extends Controller
         $user = Auth::user();
         $user->coupons()->detach($id);
         return back()->with('success', 'The Coupon was eliminated of your list');
+    }
+
+    public function search(Request $request){
+        $code = $request->input('couponCode');
+        $establishmentId = $request->input('establishmentId');
+        $establishment = Establishment::find($establishmentId);
+        $coupons = $establishment->coupons()->where('code', 'LIKE', '%'.$code.'%')->paginate(10);
+        return view('coupon.index', ['coupons' => $coupons, 'establishmentId' => $establishmentId]);   
     }
 
 }
