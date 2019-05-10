@@ -26,7 +26,18 @@ class EstablishmentController extends Controller
     }
 
     public function index(){
-        $allEstablishments = Auth::user()->establishments;
-        return view('establishment.index', ['establishments' => $allEstablishments]);
+        $user = Auth::user();
+        $allEstablishments = $user->establishments;
+        $totalCoupons = $user->countCoupons();
+        $moneyWithCoupons = $user->moneyCoupons();
+        $couponMostUsed = $user->popularCoupon();
+        $productsWithoutSell = $user->productsWithoutSell();
+        return view('establishment.index', [
+            'establishments' => $allEstablishments,
+            'toalCoupons' => $totalCoupons,
+            'moneyWithCoupons' => $moneyWithCoupons,
+            'couponMostUsed' => $couponMostUsed,
+            'productsWithoutSell' => $productsWithoutSell
+            ]);
     }
 }
