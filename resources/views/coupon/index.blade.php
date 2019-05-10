@@ -46,6 +46,22 @@
 @endsection
 
 @section('content')
+
+    <form action="{{route('searchCoupons')}}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" name="couponCode" class="form-control" placeholder="Search a Coupon by Code" aria-label="couponCode" aria-describedby="basic-addon1">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <div class="row">
         @if ($coupons->count() > 0)
             @foreach ($coupons as $coupon)
