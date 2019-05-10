@@ -37,6 +37,9 @@
         @else
             <div class="col-md-12">
                 <h2 class="text-center text-danger">There is no Products to show!</h2>
+                <div class="d-flex justify-content-center mt-3">
+                        <a href="{{url('createProduct')}}" class="btn btn-success">Create One!</a>
+                </div>
             </div>
         @endif
     </div>
