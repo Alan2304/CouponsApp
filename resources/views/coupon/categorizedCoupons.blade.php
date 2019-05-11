@@ -62,10 +62,14 @@
     <div class="container">
         @foreach ($categorizedCoupons as $type => $key)
         <div class="row">
-            <h2 class="col-md-10">Coupons of {{$type}}</h5>
-            <div class="col-md-2 my-auto">
-                <div class="see-more">
-                    <a href="{{url('coupons/type/'.$type)}}"><h5 class="text-center">Ver mas</h5></a>
+            <div class="col-md-12">
+                <div class="row category-header mb-3">
+                    <h2 class="col-md-10">Coupons of {{$type}}</h5>
+                    <div class="col-md-2 my-auto">
+                        <div class="see-more">
+                            <a href="{{url('coupons/type/'.$type)}}"><h5 class="text-center">Ver mas</h5></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

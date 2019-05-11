@@ -25,6 +25,13 @@ class InventoryController extends Controller
     }
 
     public function create(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'amount' => 'required',
+            'quantity' => 'required',
+            'establishment_id' => 'required',
+            'type_id' => 'required'
+        ]);
         $newProduct = new Product();
 
         $newProduct->name = $request->input('name');
@@ -71,6 +78,12 @@ class InventoryController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'amount' => 'required',
+            'quantity' => 'required',
+            'establishment_id' => 'required',
+        ]);
         $product = Product::find($id);
         $product->name = $request->input('name');
         $product->amount = (float)$request->input('amount');

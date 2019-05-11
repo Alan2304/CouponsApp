@@ -13,6 +13,12 @@ class EstablishmentController extends Controller
     }
 
     public function create(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'estate_id' => 'required',
+            'city_id' => 'required'
+        ]);
         $establishment = new Establishment();
         $establishment->name = $request->input('name');
         $establishment->address = $request->input('address');

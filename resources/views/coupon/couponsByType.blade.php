@@ -61,6 +61,7 @@
 @section('content')
     <div class="container">
         <h2 class="text-center">Coupons of {{$type->name}}</h2>
+        <p class="text-center"><i class="{{$type->icon}} text-primary fa-4x"></i></p>
         <div class="row">
             @foreach ($coupons as $coupon)      
                 <div class="col-md-4">

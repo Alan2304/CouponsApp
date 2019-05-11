@@ -60,4 +60,8 @@ img.card-image-top{
       transform: rotate(360deg);
     }
   }
+
+  .category-header{
+    border-bottom: solid grey 2px;
+  }
   

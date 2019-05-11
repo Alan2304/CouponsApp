@@ -5,11 +5,20 @@
 @endsection
 
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    {{$message}}
-</div>
-@endif
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        {{$message}}
+    </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
     <form action="{{route('registerEstablishment')}}" method="POST" class="col-md-12">
         @csrf

@@ -5,6 +5,15 @@
 @endsection
     
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             {{$message}}
@@ -28,7 +37,7 @@
             <div class="form-group">
                 <label for="establishment_id">Establishment</label>
                 <select name="establishment_id" id="establishment_id" class="form-control">
-                    <option value="0">Select an Option</option>
+                    <option>Select an Option</option>
                     @foreach ($establishments as $establishment)
                         <option value="{{$establishment->id}}">{{$establishment->name}}</option>
                     @endforeach
@@ -37,7 +46,7 @@
             <div class="form-group">
                 <label for="type_id">Type of the product</label>
                 <select name="type_id" id="type_id" class="form-control">
-                    <option value="0">Select an Option</option>
+                    <option>Select an Option</option>
                     @foreach ($types as $type)
                         <option value="{{$type->id}}">{{$type->name}}</option>
                     @endforeach

@@ -35,25 +35,31 @@
             </div>
         @endif
 
+        <h2 class="text-center">My Coupons </h2>
+        <p class="text-center"><i class="fas fa-users text-primary fa-5x"></i></p>
         <div class="row">
-            @foreach ($myCoupons as $coupon)
-                @if ($coupon->pivot->used == 0)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$coupon->name}}</h5>
-                                <p class="card-text">{{$coupon->description}}</p>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#seeCouponModal" data-code="{{$coupon->id}}">Use cupon</button>
-                                <a href="{{url('myCoupons/delete/'.$coupon->id)}}" class="btn btn-danger">Delete</a>
-                                @auth
-                                    <input type="hidden" id="userId" value="{{Auth::user()->id}}">
-                                @endauth
+            @if ($couponsCount > 0)
+                @foreach ($myCoupons as $coupon)
+                    @if ($coupon->pivot->used == 0)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img class="card-image-top" src="https://via.placeholder.com/300x100C" alt="test">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$coupon->name}}</h5>
+                                    <p class="card-text">{{$coupon->description}}</p>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#seeCouponModal" data-code="{{$coupon->id}}">Use cupon</button>
+                                    <a href="{{url('myCoupons/delete/'.$coupon->id)}}" class="btn btn-danger">Delete</a>
+                                    @auth
+                                        <input type="hidden" id="userId" value="{{Auth::user()->id}}">
+                                    @endauth
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
-            @endforeach
+                    @endif
+                @endforeach
+            @else
+                <h2 class="text-danger text-center">You don't have any coupon</h2>
+            @endif
         </div>
         <div class="d-flex justify-content-center">
             {{$myCoupons->links()}}

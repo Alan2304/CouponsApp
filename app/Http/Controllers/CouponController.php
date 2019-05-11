@@ -24,6 +24,13 @@ class CouponController extends Controller
     }
 
     public function create(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'discount' => 'required',
+            'expiration' => 'required',
+            'description' => 'required'
+        ]);
+        
         $product = Product::find($id);
         $establishment = $product->establishment;
 
@@ -68,6 +75,13 @@ class CouponController extends Controller
     }
 
     public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required',
+            'discount' => 'required',
+            'expiration' => 'required',
+            'description' => 'required'
+        ]);
+        
         $coupon = Coupon::find($id);
         $coupon->name = $request->input('name');
         $coupon->discount= $request->input('discount');
@@ -163,8 +177,9 @@ class CouponController extends Controller
 
     public function myCoupons(){
         $user = Auth::user();
+        $couponsCount = $user->coupons->count();
         $myCoupons = $user->coupons()->paginate(10);
-        return view('coupon.myCoupons', ['myCoupons' => $myCoupons]);
+        return view('coupon.myCoupons', ['myCoupons' => $myCoupons, 'couponsCount' => $couponsCount]);
     }
 
     public function myCouponsDelete($id){

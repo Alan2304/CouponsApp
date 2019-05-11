@@ -66,7 +66,7 @@
         a un mejor precio!
     </p>
     <p class="text-center">
-        <a class="btn btn-primary btn-lg text-center" role="button" href="#">Ver mas</a>
+        <a class="btn btn-primary btn-lg text-center" role="button" href="{{route('categorizedCoupons')}}">Ver mas</a>
     </p>
 </div>
 
